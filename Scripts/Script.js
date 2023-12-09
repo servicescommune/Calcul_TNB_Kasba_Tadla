@@ -899,7 +899,6 @@ function verify(pos){
     date_fin = document.getElementById("date_fin").value;
     var date_diff = get_year_diff(date_debut,date_fin);
     var ch = document.getElementById(pos);
-    var total_total_penalites = totaux_des_montants["total penalite 15 %"] + totaux_des_montants["total penalite 10 %"] + totaux_des_montants["total penalite 5 %"] + totaux_des_montants["total penalite 0.5 %"];
     if(ch.checked){
         totaux_des_montants["total penalite 15 %"] -= calcul_par_annee[pos]["penalite 15 %"];
         calcul_par_annee[pos]["penalite 15 %"] = 0;
@@ -963,6 +962,7 @@ function verify(pos){
         }
         output_total.innerHTML += total.toFixed(2);
     }
+    var total_total_penalites = totaux_des_montants["total penalite 15 %"] + totaux_des_montants["total penalite 10 %"] + totaux_des_montants["total penalite 5 %"] + totaux_des_montants["total penalite 0.5 %"];
     var total_content = "<tr class='bg-warning'> <td colspan='2'> المجموع: </td> <td>------</td> <td>------</td> <td class='exonere'>"
         +totaux_des_montants["total montant"].toFixed(2)+"</td> <td class='d-none d-sm-table-cell'>"
         +totaux_des_montants["total penalite 15 %"].toFixed(2)+"</td> <td class='d-none d-sm-table-cell'>"
