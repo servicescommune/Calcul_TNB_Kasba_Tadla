@@ -1119,7 +1119,6 @@ function Exonere(pos) {
                 t_total_penalites += calcule_penalite_15(calcul_par_annee[k]["surface"] * calcul_par_annee[k]["tarif"], calcul_par_annee[k][current_date.getFullYear()]);
                 calcul_par_annee[k]["total"] = calcule_penalite_15(calcul_par_annee[k]["surface"] * calcul_par_annee[k]["tarif"], calcul_par_annee[k][current_date.getFullYear()]);
                 if (!checkboxStates[k].decPO) { calcul_par_annee[k]["total"] += calcule_penalite_15(calcul_par_annee[k]["surface"] * calcul_par_annee[k]["tarif"], calcul_par_annee[k][current_date.getFullYear()]); }
-                alert( calcul_par_annee[k]["total"]);
             }
         } else {
             calcul_par_annee[k]["montant"] = parseFloat(calcul_par_annee[k]["surface"] * calcul_par_annee[k]["tarif"]);
