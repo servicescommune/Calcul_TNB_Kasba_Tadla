@@ -280,7 +280,7 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                calcul_par_annee[i]["mois de retard"] -= 3;
+                //calcul_par_annee[i]["mois de retard"] -= 3;
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -295,7 +295,7 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i <= 2020){
+                if(date_debut+i == 2020){
                     calcul_par_annee[i] = new Array(10);
                     calcul_par_annee[i]["annee"] = date_debut+i;
                     calcul_par_annee[i]["surface"] = surface;
@@ -403,7 +403,7 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                calcul_par_annee[i]["mois de retard"] -= 3;
+                //calcul_par_annee[i]["mois de retard"] -= 3;
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -418,7 +418,7 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i <= 2020){
+                if(date_debut+i == 2020){
                     calcul_par_annee[i] = new Array(10);
                     calcul_par_annee[i]["annee"] = date_debut+i;
                     calcul_par_annee[i]["surface"] = surface;
@@ -526,7 +526,7 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                calcul_par_annee[i]["mois de retard"] -= 3;
+                //calcul_par_annee[i]["mois de retard"] -= 3;
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -541,7 +541,7 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i <= 2020){
+                if(date_debut+i == 2020){
                     calcul_par_annee[i] = new Array(10);
                     calcul_par_annee[i]["annee"] = date_debut+i;
                     calcul_par_annee[i]["surface"] = surface;
@@ -648,7 +648,7 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                calcul_par_annee[i]["mois de retard"] -= 3;
+                //calcul_par_annee[i]["mois de retard"] -= 3;
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -663,7 +663,7 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i <= 2020){
+                if(date_debut+i == 2020){
                     calcul_par_annee[i] = new Array(10);
                     calcul_par_annee[i]["annee"] = date_debut+i;
                     calcul_par_annee[i]["surface"] = surface;
@@ -771,7 +771,7 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                calcul_par_annee[i]["mois de retard"] -= 3;
+                //calcul_par_annee[i]["mois de retard"] -= 3;
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -786,7 +786,7 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i <= 2020){
+                if(date_debut+i == 2020){
                     calcul_par_annee[i] = new Array(10);
                     calcul_par_annee[i]["annee"] = date_debut+i;
                     calcul_par_annee[i]["surface"] = surface;
