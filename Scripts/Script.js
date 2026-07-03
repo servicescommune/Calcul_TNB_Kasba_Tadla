@@ -280,7 +280,9 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                //calcul_par_annee[i]["mois de retard"] -= 3;
+                if(annee_date_fin >= 2020){
+                    calcul_par_annee[i]["mois de retard"] -= 3;
+                }
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -295,50 +297,29 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i == 2020){
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = habitat_R_plus_2_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                calcul_par_annee[i] = new Array(10);
+                calcul_par_annee[i]["annee"] = date_debut+i;
+                calcul_par_annee[i]["surface"] = surface;
+                calcul_par_annee[i]["tarif"] = habitat_R_plus_2_tarif[1];
+                calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
+                calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                if(date_debut+i <= 2020 && annee_date_fin >= 2020){
                     calcul_par_annee[i]["mois de retard"] -= 3;
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
-                }else{
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = habitat_R_plus_2_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
                 }
+                calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
+                //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
+                //alert("tarif " + calcul_par_annee[i][2]);
+                calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
+                //alert(parseFloat(calcul_par_annee[i][9]));
+                totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
+                totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
+                totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
+                totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
+                totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
+                totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
             }else if(date_debut+i == 2023){
                 //alert("date est > 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
@@ -403,7 +384,9 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                //calcul_par_annee[i]["mois de retard"] -= 3;
+                if(annee_date_fin >= 2020){
+                    calcul_par_annee[i]["mois de retard"] -= 3;
+                }
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -418,50 +401,29 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i == 2020){
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = habitat_R_plus_3_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                calcul_par_annee[i] = new Array(10);
+                calcul_par_annee[i]["annee"] = date_debut+i;
+                calcul_par_annee[i]["surface"] = surface;
+                calcul_par_annee[i]["tarif"] = habitat_R_plus_3_tarif[1];
+                calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
+                calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                if(date_debut+i <= 2020 && annee_date_fin >= 2020){
                     calcul_par_annee[i]["mois de retard"] -= 3;
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
-                }else{
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = habitat_R_plus_3_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
                 }
+                calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
+                //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
+                //alert("tarif " + calcul_par_annee[i][2]);
+                calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
+                //alert(parseFloat(calcul_par_annee[i][9]));
+                totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
+                totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
+                totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
+                totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
+                totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
+                totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
             }else if(date_debut+i == 2023){
                 //alert("date est > 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
@@ -526,7 +488,9 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                //calcul_par_annee[i]["mois de retard"] -= 3;
+                if(annee_date_fin >= 2020){
+                    calcul_par_annee[i]["mois de retard"] -= 3;
+                }
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -541,50 +505,29 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i == 2020){
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = individuel_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                calcul_par_annee[i] = new Array(10);
+                calcul_par_annee[i]["annee"] = date_debut+i;
+                calcul_par_annee[i]["surface"] = surface;
+                calcul_par_annee[i]["tarif"] = individuel_tarif[1];
+                calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
+                calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                if(date_debut+i <= 2020 && annee_date_fin >= 2020){
                     calcul_par_annee[i]["mois de retard"] -= 3;
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
-                }else{
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = individuel_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
                 }
+                calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
+                //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
+                //alert("tarif " + calcul_par_annee[i][2]);
+                calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
+                //alert(parseFloat(calcul_par_annee[i][9]));
+                totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
+                totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
+                totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
+                totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
+                totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
+                totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
             }else if(date_debut+i == 2023){
                 //alert("date est > 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
@@ -648,7 +591,9 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                //calcul_par_annee[i]["mois de retard"] -= 3;
+                if(annee_date_fin >= 2020){
+                    calcul_par_annee[i]["mois de retard"] -= 3;
+                }
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -663,50 +608,29 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i == 2020){
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = villa_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                calcul_par_annee[i] = new Array(10);
+                calcul_par_annee[i]["annee"] = date_debut+i;
+                calcul_par_annee[i]["surface"] = surface;
+                calcul_par_annee[i]["tarif"] = villa_tarif[1];
+                calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
+                calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                if(date_debut+i <= 2020 && annee_date_fin >= 2020){
                     calcul_par_annee[i]["mois de retard"] -= 3;
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
-                }else{
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = villa_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
                 }
+                calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
+                //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
+                //alert("tarif " + calcul_par_annee[i][2]);
+                calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
+                //alert(parseFloat(calcul_par_annee[i][9]));
+                totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
+                totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
+                totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
+                totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
+                totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
+                totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
             }else if(date_debut+i == 2023){
                 //alert("date est > 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
@@ -771,7 +695,9 @@ function calculer(){
                 calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
                 calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                //calcul_par_annee[i]["mois de retard"] -= 3;
+                if(annee_date_fin >= 2020){
+                    calcul_par_annee[i]["mois de retard"] -= 3;
+                }
                 calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
                 //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
                 //alert("tarif " + calcul_par_annee[i][2]);
@@ -786,50 +712,29 @@ function calculer(){
             }else if(date_debut+i >= 2018 && date_debut+i <= 2022){
                 //alert("date est entre 2018 et 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
-                if(date_debut+i == 2020){
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = autre_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                calcul_par_annee[i] = new Array(10);
+                calcul_par_annee[i]["annee"] = date_debut+i;
+                calcul_par_annee[i]["surface"] = surface;
+                calcul_par_annee[i]["tarif"] = autre_tarif[1];
+                calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
+                calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
+                calcul_par_annee[i]["mois de retard"] = nb_m.pop();
+                if(date_debut+i <= 2020 && annee_date_fin >= 2020){
                     calcul_par_annee[i]["mois de retard"] -= 3;
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
-                }else{
-                    calcul_par_annee[i] = new Array(10);
-                    calcul_par_annee[i]["annee"] = date_debut+i;
-                    calcul_par_annee[i]["surface"] = surface;
-                    calcul_par_annee[i]["tarif"] = autre_tarif[1];
-                    calcul_par_annee[i]["montant"] = parseFloat(surface * calcul_par_annee[i]["tarif"]);
-                    calcul_par_annee[i]["penalite 15 %"] = parseFloat(calcule_penalite_15(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 10 %"] = parseFloat(calcule_penalite_10(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["penalite 5 %"] = parseFloat(calcule_penalite_5(calcul_par_annee[i]["montant"], date_debut+i));
-                    calcul_par_annee[i]["mois de retard"] = nb_m.pop();
-                    calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
-                    //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
-                    //alert("tarif " + calcul_par_annee[i][2]);
-                    calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
-                    //alert(parseFloat(calcul_par_annee[i][9]));
-                    totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
-                    totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
-                    totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
-                    totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
-                    totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
-                    totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
                 }
+                calcul_par_annee[i]["penalite 0.5 %"] = parseFloat(calcule_penalite_05(calcul_par_annee[i]["montant"], date_debut+i) * calcul_par_annee[i]["mois de retard"]);
+                //alert(parseFloat(calcule_penalite_05(calcul_par_annee[i][3])));
+                //alert("tarif " + calcul_par_annee[i][2]);
+                calcul_par_annee[i]["total"] = parseFloat(calcul_par_annee[i]["montant"] + calcul_par_annee[i]["penalite 15 %"] + calcul_par_annee[i]["penalite 10 %"] + calcul_par_annee[i]["penalite 5 %"] + calcul_par_annee[i]["penalite 0.5 %"]);
+                //alert(parseFloat(calcul_par_annee[i][9]));
+                totaux_des_montants["total montant"] += parseFloat(calcul_par_annee[i]["montant"]);
+                totaux_des_montants["total penalite 15 %"] += parseFloat(calcul_par_annee[i]["penalite 15 %"]);
+                totaux_des_montants["total penalite 10 %"] += parseFloat(calcul_par_annee[i]["penalite 10 %"]);
+                totaux_des_montants["total penalite 5 %"] += parseFloat(calcul_par_annee[i]["penalite 5 %"]);
+                totaux_des_montants["total penalite 0.5 %"] += parseFloat(calcul_par_annee[i]["penalite 0.5 %"]);
+                totaux_des_montants["total mois de retard"] += parseFloat(calcul_par_annee[i]["mois de retard"]);
             }else if(date_debut+i == 2023){
                 //alert("date est > 2022");
                 date_debut = parseInt(document.getElementById("date_debut").value);
